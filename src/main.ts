@@ -1,26 +1,66 @@
-// Dag 3, del 1: Arrayer och objekt i Console.
+// Day 3, part 1: Arrays and objects in the console.
 import { meny } from "./data";
 
-// UPPGIFT 1: arrayer
-// a) skapa const drycker: string[] = ["Bryggkaffe", "Latte", "Te"];
-// b) lägg till "Chai" sist med push. Skriv ut listan och längden.
-// c) ta bort sista med pop och skriv ut vad som togs bort.
-// d) skriv ut platsen för "Latte" (indexOf) och om "Cola" finns (includes).
-// e) skriv ut hela listan som en text: drycker.join(", ")
+// TASK 1: arrays
+// a) create const drycker: string[] = ["Bryggkaffe", "Latte", "Te"];
+// b) add "Chai" at the end using push. Print the list and its length.
+// c) remove the last item using pop and print what was removed.
+// d) print the index of "Latte" (indexOf) and whether "Cola" is in the list (includes).
+// e) print the entire list as a string: drycker.join(", ")
+// TODO
+const drycker: string[] = ["Bryggkaffe", "Latte", "Te"];
+console.log(drycker);
+
+drycker.push("Chai");
+console.log(drycker, drycker.length);
+
+const removedDrink = drycker.pop();
+console.log(removedDrink);
+
+console.log(drycker.indexOf("Latte"));
+console.log(drycker.includes("Cola"));
+
+console.log( drycker.join(", "))
+
+
+
+// TASK 2: objects
+// a) create const kopp = { namn: "Latte", pris: 45, vegetarisk: true };
+// b) print kopp.namn and kopp["pris"]
+// c) change the price to 48, and add the property storlek: "stor"
+//    TypeScript reports an error for storlek. Describe the object with an interface where storlek is optional (storlek?: string).
+// d) print Object.keys(kopp)
 // TODO
 
+interface kopp {
+  namn: string;
+  pris: number;
+  vegetarisk: boolean;
+  storlek?: string;
+}
 
-// UPPGIFT 2: objekt
-// a) skapa const kopp = { namn: "Latte", pris: 45, vegetarisk: true };
-// b) skriv ut kopp.namn och kopp["pris"]
-// c) ändra priset till 48, och lägg till egenskapen storlek: "stor"
-//    TypeScript klagar på storlek. Beskriv objektet med en interface där storlek är valfri (storlek?: string).
-// d) skriv ut Object.keys(kopp)
+const kopp: kopp = { namn: "Latte", pris: 45, vegetarisk: true };
+console.log(kopp.namn, kopp["pris"]);
+
+kopp.pris = 48;
+kopp.storlek = "stor";
+console.log(kopp.pris,);
+
+console.log(Object.keys(kopp));
+
+
+
+
+// TASK 3: arrays of objects
+// a) print how many dishes the menu has and the name of the first one
+// b) loop using for...of and print "name – price kr" for each dish
+// c) print the name of the last dish without knowing the number of dishes (hint: length - 1)
 // TODO
+console.log(meny.length);
+console.log(meny[0].namn);
 
+for (const dish of meny) {
+  console.log(`${dish.namn} – ${dish.pris} kr`);
+}
 
-// UPPGIFT 3: arrayer av objekt
-// a) skriv ut hur många rätter menyn har och namnet på den första
-// b) loopa med for...of och skriv ut "namn – pris kr" för varje rätt
-// c) skriv ut namnet på den sista rätten utan att veta antalet (tips: length - 1)
-// TODO
+console.log(meny[meny.length - 1].namn)
