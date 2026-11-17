@@ -1,5 +1,6 @@
 // Day 3, part 1: Arrays and objects in the console.
 import { meny } from "./data";
+import { studentPris } from "./rabatt";
 
 // TASK 1: arrays
 // a) create const drycker: string[] = ["Bryggkaffe", "Latte", "Te"];
@@ -64,3 +65,21 @@ for (const dish of meny) {
 }
 
 console.log(meny[meny.length - 1].namn)
+
+for (const dish of meny) {
+   console.log(`${dish.namn} – student price: ${studentPris(dish.pris)} kr`);
+}
+
+
+// Step 10 – Test 1: Missing type="module"
+// When I removed type="module", the browser reported
+// "Cannot use import statement outside a module"
+// because it loaded main.ts as a regular script.
+
+// Test 2: Wrong import path
+// The browser showed a 500 error for main.ts because
+// Vite could not find the module "./rabattFel".
+
+//  Test 3: Opening index.html directly
+// When I opened index.html through file://, the page could not load main.ts.
+// Opening the page through the Vite server fixed it.
